@@ -1,0 +1,52 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: aqua;
+    ;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+}
+
+.input {
+    display: block;
+    margin-bottom: 0.5rem;
+    height: 1.5rem;
+    background-color: transparent;
+    border-radius: .2rem;
+    text-decoration: none;
+    font-size: .8rem;
+}
+
+label {
+    font-size: .8rem;
+
+}
+
+.botonera-form {
+    display: flex;
+    justify-content: center;
+
+    .button {
+        margin: .8rem .5rem;
+        width: 4.5rem;
+        height: 1.5rem;
+        font-size: .7rem;
+        background-color: #a563f1;
+        color: #fad7fa;
+        border-radius: .2rem;
+
+    }
+}
+.ocultar {
+    display: none;
+}
