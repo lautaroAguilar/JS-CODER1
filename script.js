@@ -22,7 +22,6 @@ button2.addEventListener(`click`, (e) => {
     
     ponerCódigo();
 });
-
 // ÁREA DE CREACIÓN DE FUNCIONES
 
 //FN crearFormulario
@@ -107,7 +106,9 @@ function obtenerValoresInputsEnviarlosAlArrayYStorage() {
         //console.log(planillaAlumnos);
         alumnosEnJSON = localStorage.setItem(`alumnos_registrados`, JSON.stringify(planillaAlumnos));
         //mostramos la ficha del alumno registrado
+        localStorage.clear();
         mostrarFicha();
+        
     })
 }
 
@@ -115,21 +116,28 @@ function obtenerValoresInputsEnviarlosAlArrayYStorage() {
 function mostrarFicha() {
 
     let h1 = document.createElement("h1");
+    h1.setAttribute(`id`, `h1`);
     h1.innerText = `Hola ` + alumno.nombre + ` esta es tu ficha`;
     container.append(h1);
     let ul = document.createElement(`ul`);
+    ul.setAttribute(`id`, `ul-ficha`);
 
     let li1 = document.createElement(`li`);
-    li1.innerText = `Nombre:` + alumno.nombre;
+    li1.setAttribute(`id`, `li1`);
+    li1.innerText = `Nombre: ` + alumno.nombre;
     let li2 = document.createElement(`li`);
-    li2.innerText = `Apellido:` + alumno.apellido;
+    li2.setAttribute(`id`, `li2`);
+    li2.innerText = `Apellido: ` + alumno.apellido;
     let li3 = document.createElement(`li`);
-    li3.innerText = `Fecha de nacimiento:` + alumno.fechaDeNacimiento;
+    li3.setAttribute(`id`, `li3`);
+    li3.innerText = `Fecha de nacimiento: ` + alumno.fechaDeNacimiento;
     let li4 = document.createElement(`li`);
-    li4.innerText = `Nacionalidad:` + alumno.nacionalidad;
+    li4.setAttribute(`id`, `li4`);
+    li4.innerText = `Nacionalidad: ` + alumno.nacionalidad;
 
     ul.append(li1, li2, li3, li4);
     container.append(ul);
+    botonContarAsistencia();
 }
 
 //FN ponerCódigo
@@ -172,7 +180,7 @@ function ponerCódigo() {
                 icon: "success",
                 timer: 5000,
                 button: true,
-            });
+            })
         } else {
             //sweet alert "Contraseña incorrecta" 
             swal({
@@ -183,6 +191,7 @@ function ponerCódigo() {
             });
 
         }
+        botonFinalizarPrograma();
     })
     //cancelar y volver
     botonCancelarEnvio.addEventListener(`click`, (e) => {
@@ -191,8 +200,45 @@ function ponerCódigo() {
         document.getElementById(`inputClave`).style.display = `none`;
         document.getElementById(`botonCancelarEnvio`).style.display = `none`;
         document.getElementById(`botonEnviarCodigo`).style.display = `none`;
+        document.getElementById(`boton-finalizar`).style.display = `none`;
         document.getElementById("button-container").style.display = "block";
         document.getElementById("container-text").style.display = "block";
         
     })
 }
+const botonContarAsistencia = () => {
+    let botonIrAContarAsistencia = document.createElement(`button`);
+    botonIrAContarAsistencia.innerText = `Contar asistencia`;
+    botonIrAContarAsistencia.className = `boton`;
+    botonIrAContarAsistencia.setAttribute(`id`, `boton-asistencia`);
+    container.append(botonIrAContarAsistencia);
+    
+    botonIrAContarAsistencia.addEventListener(`click`, (e) => {
+        e.preventDefault();
+        document.getElementById(`h1`).style.display = `none`;
+        document.getElementById(`ul-ficha`).style.display = `none`;
+        document.getElementById(`form-registro`).style.display = `none`;
+        document.getElementById(`boton-asistencia`).style.display = `none`;
+        ponerCódigo();
+    })
+}
+const botonFinalizarPrograma = () => {
+    let botonFinalizar = document.createElement(`button`);
+    botonFinalizar.setAttribute(`id`, `boton-finalizar`);
+    botonFinalizar.className = `boton`;
+    botonFinalizar.innerText = `Finalizar`;
+    container.append(botonFinalizar);
+
+    botonFinalizar.addEventListener(`click`, () => {
+        //FN que muestre cantidad de faltas del alumno.
+    })
+}
+//Me falta un boton finalizar programa y un boton que me finalice la parte del registro
+//Tengo que recorrer el storage, obtener las keys con .key y mostrar sus valores en pantalla una vez se finalice el programa.
+const recorrerStorage = () => {
+    for (let i = 0; i < localStorage.length; i++){
+        let clave = localStorage.key(i);
+        console.log(clave);
+    }
+}
+recorrerStorage();
