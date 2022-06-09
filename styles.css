@@ -1,0 +1,117 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  background-color: #ebe5f1;
+}
+
+.main-container {
+  height: 100vh;
+  width: 100%;
+  background: #ebe5f1;
+}
+
+.container {
+  background-color: #b68ef5;
+  width: 30%;
+  height: 80%;
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1rem;
+}
+
+.container-text {
+  width: 80%;
+  text-align: center;
+}
+
+.container-text h1 {
+  margin-bottom: 2rem;
+}
+
+.button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 1.1rem 2.4rem;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a a:hover {
+  color: orange;
+}
+
+.form-registro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.input {
+  display: block;
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+  background-color: #cfb6f8;
+}
+
+.boton {
+  background-color: #cfb6f8;
+  display: block;
+  margin-bottom: .5rem;
+  border-radius: .5rem;
+}
+
+.titulo {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.lista li {
+  font-size: 1.5rem;
+}
+
+.div {
+  width: 24rem;
+}
+
+.div h4 {
+  font-size: 1rem;
+}
+
+.div p {
+  font-size: .6rem;
+}
+
+.titulo-felicitaciones {
+  margin-top: 17rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */

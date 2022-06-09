@@ -69,6 +69,7 @@ function crearFormulario() {
     botonRegistro.className = `boton`;
     botonVolver.setAttribute(`id`, `boton-volver`);
     botonRegistro.setAttribute(`id`, `boton-registro`);
+    botonRegistro.setAttribute(`type`, `submit`);
     botonVolver.innerText = `Volver`;
     botonRegistro.innerText = `Registrarme`;
     form.append(botonVolver);
@@ -142,8 +143,10 @@ function mostrarFicha() {
     let h1 = document.createElement("h1");
     h1.setAttribute(`id`, `h1`);
     h1.innerText = `${alumno.name} estás por convertirte en alumno de Hogwarts.`;
+    h1.className = `titulo`;
     container.append(h1);
     let ul = document.createElement(`ul`);
+    ul.className = `lista`;
     ul.setAttribute(`id`, `ul-ficha`);
 
     let li1 = document.createElement(`li`);
@@ -175,17 +178,21 @@ function ponerCódigo() {
     let h2 = document.createElement(`h2`);
     h2.setAttribute(`id`, `h2`);
     h2.innerText = `¿En que andén se aborda el tren a Hogwarts?`;
+    h2.className = `titulo`;
     //input
     inputClave = document.createElement(`input`);
+    inputClave.className = `input`;
     inputClave.setAttribute(`id`, `inputClave`);
     inputClave.setAttribute(`type`, `text`);
     inputClave.setAttribute(`placeholder`, `Ingresar respuesta`);
     //boton enviar
     botonEnviarCodigo = document.createElement(`button`);
+    botonEnviarCodigo.className = `boton`;
     botonEnviarCodigo.setAttribute(`id`, `botonEnviarCodigo`);
     botonEnviarCodigo.innerText = `Enviar`;
     //boton cancelar
     botonCancelarEnvio = document.createElement(`button`);
+    botonCancelarEnvio.className = `boton`;
     botonCancelarEnvio.setAttribute(`id`, `botonCancelarEnvio`);
     botonCancelarEnvio.innerText = `Cancelar`;
     container.append(h2);
@@ -271,6 +278,7 @@ const botonFinalizarPrograma = () => {
 const felicitacionesInscripto = () => {
     let containerTextoFelicitaciones = document.createElement(`div`);
     let h3 = document.createElement(`h3`);
+    h3.className = `titulo-felicitaciones`;
     h3.innerText = `Felicitaciones, ya sos parte del mundo mágico. Bienvenido a Hogwarts!`
     containerTextoFelicitaciones.append(h3);
     container.append(containerTextoFelicitaciones);
@@ -278,7 +286,9 @@ const felicitacionesInscripto = () => {
 
 
 let div = document.createElement(`div`);
+div.className = `div`;
 let articleMain = document.createElement(`article`);
+articleMain.className = `article`;
 articleMain.setAttribute(`id`, `articulo-main`);
 
 const crearArticleMain = () => {
@@ -294,9 +304,10 @@ const crearArticleMain = () => {
 
 //Consumir una API
 let divEstudiantesHogwarts = document.createElement(`div`);
+divEstudiantesHogwarts.className = `div`;
 divEstudiantesHogwarts.setAttribute(`id`, `div-estudiantesHogwarts`)
 let article = ``;
-
+article.className = `article`;
 const finalizarPrograma = () => {
     fetch(`http://hp-api.herokuapp.com/api/characters/students`).then( (response) => response.json()).then( (data) => {
         
