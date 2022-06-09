@@ -1,3 +1,6 @@
+// La respuesta a la pregunta es "En el andén nueve y tres cuartos" 
+
+
 //contenedores
 const container = document.getElementById(`container`);
 const containerText = document.getElementById(`container-text`);
