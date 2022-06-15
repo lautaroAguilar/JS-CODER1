@@ -17,8 +17,15 @@ html {
 .container {
   background-color: #b68ef5;
   width: 30%;
-  height: 80%;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+  height: auto;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
+  min-height: min-content;
   margin-top: 5rem;
+  padding: 2rem 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,7 +117,7 @@ a a:hover {
 }
 
 .titulo-felicitaciones {
-  margin-top: 18rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   text-align: center;
 }

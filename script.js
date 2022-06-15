@@ -1,5 +1,11 @@
 // La respuesta a la pregunta es "En el andén nueve y tres cuartos" 
+let alumnoLogueado = localStorage.getItem(`lista_alumnos`); 
 
+function usuarioLogueado() {
+    (alumnoLogueado) ? sacarBotonRegistrarme() : console.log();
+}
+
+usuarioLogueado()
 
 //contenedores
 const container = document.getElementById(`container`);
@@ -15,8 +21,13 @@ button1.addEventListener(`click`, (e) => {
     document.getElementById("button-container").style.display = "none";
     document.getElementById("container-text").style.display = "none";
     
-    crearFormulario();
-    obtenerValoresInputsEnviarlosAlArrayYStorage();
+    if(alumnoLogueado){
+        mostrarFicha()
+    } else {
+        crearFormulario();
+        obtenerValoresInputsEnviarlosAlArrayYStorage();
+    }
+    
     //obtenerValoresStorage();
 });
 /* button2.addEventListener(`click`, (e) => {
@@ -127,25 +138,36 @@ const obtenerValoresInputsEnviarlosAlArrayYStorage = () => {
 }
 //localStorage.clear()
 //FN obtener valores del storage
-let arrayAlumnosRegistrados = []; 
-let alumnoRegistradoLocal = ``;
+
 const obtenerValoresStorage = () => {
-    
+    let arrayAlumnosRegistrados = []; 
+    let alumnoRegistradoLocal = [];
+
     alumnoRegistradoLocal = localStorage.getItem(`lista_alumnos`);
     console.log(alumnoRegistradoLocal);
-    arrayAlumnosRegistrados.push(JSON.parse(alumnoRegistradoLocal));
+    arrayAlumnosRegistrados = JSON.parse(alumnoRegistradoLocal);
     console.log(arrayAlumnosRegistrados);
     
+    for (alumno of arrayAlumnosRegistrados){
+        
+    }
 }
+obtenerValoresStorage()
 
 
+
+
+function sacarBotonRegistrarme() {
+    const botonRegistro = document.getElementById(`button-1`)
+    botonRegistro.innerText = `Ya estoy logueado`;
+}
 
 //FN mostrar ficha
 function mostrarFicha() {
 
     let h1 = document.createElement("h1");
     h1.setAttribute(`id`, `h1`);
-    h1.innerText = `${alumno.name} estás por convertirte en alumno de Hogwarts.`;
+    (alumnoLogueado)  ? h1.innerText = `${alumno.name} ya eres alumno de Hogwarts` : h1.innerText = `${alumno.name} estás por convertirte en alumno de Hogwarts.`; 
     h1.className = `titulo`;
     container.append(h1);
     let ul = document.createElement(`ul`);
@@ -163,7 +185,7 @@ function mostrarFicha() {
     li3.innerText = `Fecha de nacimiento: ` + alumno.dateOfBirth;
     let li4 = document.createElement(`li`);
     li4.setAttribute(`id`, `li4`);
-    li4.innerText = `Tu patronus es un: ` + alumno.patronus;
+    li4.innerText = `Tu patronus es un(a): ` + alumno.patronus;
 
     ul.append(li1, li2, li3, li4);
     container.append(ul);
@@ -172,9 +194,9 @@ function mostrarFicha() {
 
 //FN ponerCódigo
 
-let inputClave = ``;
-let botonEnviarCodigo = ``;
-let botonCancelarEnvio = ``;
+var inputClave = ``;
+var botonEnviarCodigo = ``;
+var botonCancelarEnvio = ``;
 
 function ponerCódigo() {
     //titulo
@@ -243,23 +265,36 @@ function ponerCódigo() {
         
     })
 }
-const botonContarAsistencia = () => {
+function botonContarAsistencia() {
     let botonIrAContarAsistencia = document.createElement(`button`);
-    botonIrAContarAsistencia.innerText = `Responder pregunta`;
+    (alumnoLogueado) ? botonIrAContarAsistencia.innerText = `Ver listado de alumnos` : botonIrAContarAsistencia.innerText = `Responder pregunta`;
     botonIrAContarAsistencia.className = `boton`;
     botonIrAContarAsistencia.setAttribute(`id`, `boton-asistencia`);
     container.append(botonIrAContarAsistencia);
     
     botonIrAContarAsistencia.addEventListener(`click`, (e) => {
         e.preventDefault();
-        document.getElementById(`h1`).style.display = `none`;
-        document.getElementById(`ul-ficha`).style.display = `none`;
-        document.getElementById(`form-registro`).style.display = `none`;
-        document.getElementById(`boton-asistencia`).style.display = `none`;
-        ponerCódigo();
+        if(alumnoLogueado){
+            document.getElementById(`h1`).style.display = `none`;
+            document.getElementById(`ul-ficha`).style.display = `none`;
+            document.getElementById(`boton-asistencia`).style.display = `none`;
+            felicitacionesInscripto();
+            crearArticleMain();
+            finalizarPrograma();
+        } else {
+            document.getElementById(`h1`).style.display = `none`;
+            document.getElementById(`ul-ficha`).style.display = `none`;
+            document.getElementById(`form-registro`).style.display = `none`;
+            document.getElementById(`boton-asistencia`).style.display = `none`;
+            ponerCódigo();
+        }
+        
     })
 }
-const botonFinalizarPrograma = () => {
+
+
+
+function botonFinalizarPrograma() {
     let botonFinalizar = document.createElement(`button`);
     botonFinalizar.setAttribute(`id`, `boton-finalizar`);
     botonFinalizar.className = `boton`;
@@ -278,7 +313,7 @@ const botonFinalizarPrograma = () => {
     })
 }
 
-const felicitacionesInscripto = () => {
+function felicitacionesInscripto() {
     let containerTextoFelicitaciones = document.createElement(`div`);
     let h3 = document.createElement(`h3`);
     h3.className = `titulo-felicitaciones`;
@@ -288,30 +323,34 @@ const felicitacionesInscripto = () => {
 }
 
 
-let div = document.createElement(`div`);
-div.className = `div`;
-let articleMain = document.createElement(`article`);
-articleMain.className = `article`;
-articleMain.setAttribute(`id`, `articulo-main`);
+function crearArticleMain() {
+    var div = document.createElement(`div`);
+    div.className = `div`;
+    var articleMain = document.createElement(`article`);
+    articleMain.className = `article`;
+    articleMain.setAttribute(`id`, `articulo-main`);
 
-const crearArticleMain = () => {
-    let h4 = document.createElement(`h4`);
-    let p = document.createElement(`p`);
+    var h4 = document.createElement(`h4`);
+    var p = document.createElement(`p`);
     h4.innerText = `${alumno.name}`
     p.innerText = `El(a) hechicero(a) ${alumno.name}, pertenece a la casa de ${alumno.house}. Nació el ${alumno.dateOfBirth} y su patronus es un(a) ${alumno.patronus}`
     articleMain.append(h4);
     articleMain.append(p);
     div.append(articleMain);
     container.append(div);
+    console.log(h4)
 }
 
+
 //Consumir una API
-let divEstudiantesHogwarts = document.createElement(`div`);
-divEstudiantesHogwarts.className = `div`;
-divEstudiantesHogwarts.setAttribute(`id`, `div-estudiantesHogwarts`)
-let article = ``;
-article.className = `article`;
-const finalizarPrograma = () => {
+
+function finalizarPrograma () {
+    let divEstudiantesHogwarts = document.createElement(`div`);
+    divEstudiantesHogwarts.className = `div`;
+    divEstudiantesHogwarts.setAttribute(`id`, `div-estudiantesHogwarts`)
+    let article = ``;
+    article.className = `article`;
+
     fetch(`http://hp-api.herokuapp.com/api/characters/students`).then( (response) => response.json()).then( (data) => {
         
         const arrayFiltrado = data.filter( (el, i) => i < 9);

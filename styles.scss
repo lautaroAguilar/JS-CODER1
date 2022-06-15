@@ -14,8 +14,11 @@ html{
 .container{
     background-color: rgb(182, 142, 245);
     width: 30%;
-    height: 80%;
+    min-width: min-content;
+    height: auto;
+    min-height: min-content;
     margin-top: 5rem;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -87,7 +90,7 @@ a{
     
 }
 .titulo-felicitaciones{
-    margin-top: 18rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
     text-align: center;
 }
